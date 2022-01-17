@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PickupHandler : MonoBehaviour
 {
+    // handle player v pickup interactions
     private void OnTriggerEnter2D(Collider2D collision)
     {
         bool isPickup = collision.gameObject.CompareTag("Pickup");
