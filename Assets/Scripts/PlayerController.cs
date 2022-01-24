@@ -23,5 +23,23 @@ public class PlayerController : MonoBehaviour
 
         // override the old position with the new one
         transform.position = newPosition;
+
+        // moving right
+        if(horizontal > 0.0f)
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        } 
+        else if( horizontal < 0.0f)
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+        }
+        else if (vertical > 0.0f)
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+        }
+        else if (vertical < 0.0f)
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 0.0f, 270.0f);
+        }
     }
 }
