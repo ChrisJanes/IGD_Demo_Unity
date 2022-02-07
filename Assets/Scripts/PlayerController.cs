@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [Range(1, 10)]
     public float MovementSpeed = 4.0f;
 
+    public Animator animator; 
+
     // Get player input and move the attached game object
     void Update()
     {
@@ -20,6 +22,10 @@ public class PlayerController : MonoBehaviour
                 transform.position.x + (horizontal * MovementSpeed * Time.deltaTime),
                 transform.position.y + (vertical * MovementSpeed * Time.deltaTime), 
                 0.0f);
+
+        // set animation parameter to transition to / from idle and walk
+        float moveSpeed = Vector3.Distance(newPosition, transform.position);
+        animator.SetFloat("MovementSpeed", moveSpeed);
 
         // override the old position with the new one
         transform.position = newPosition;
