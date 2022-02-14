@@ -18,4 +18,15 @@ public class PlayerProperties : MonoBehaviour
         scoreDisplay.text = "Score: " + score;
         healthDisplay.fillAmount = health / MaxHealth;
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0.0f)
+        {
+            GetComponent<PlayerRespawn>().RespawnCharacter();
+            health = MaxHealth;
+        }
+    }
 }

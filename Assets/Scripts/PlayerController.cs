@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     [Range(1, 10)]
     public float MovementSpeed = 4.0f;
 
+    public bool isOnLadder = false;
+
     public Animator animator; 
 
     // Get player input and move the attached game object
@@ -15,6 +17,11 @@ public class PlayerController : MonoBehaviour
         // local variables that only exist inside Update
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+
+        /*if(isOnLadder == false)
+        {
+            vertical = 0.0f;
+        }*/
 
         // create a new Vector3 that stores the updated position
         Vector3 newPosition 
@@ -29,6 +36,11 @@ public class PlayerController : MonoBehaviour
 
         // override the old position with the new one
         transform.position = newPosition;
+
+        if (Input.GetKey(KeyCode.Backspace))
+        {
+            GetComponent<PlayerRespawn>().RespawnCharacter();
+        }
 
         // moving right
         if(horizontal > 0.0f)
